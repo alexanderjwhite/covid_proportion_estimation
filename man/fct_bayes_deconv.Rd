@@ -4,13 +4,7 @@
 \alias{fct_bayes_deconv}
 \title{Title}
 \usage{
-fct_bayes_deconv(
-  .data,
-  lo_cut = 0,
-  hi_cut = 0.05,
-  table = FALSE,
-  updateProgress = NULL
-)
+fct_bayes_deconv(.data, updateProgress = NULL)
 }
 \arguments{
 \item{.data}{}

@@ -14,7 +14,6 @@ mod_results_dt_ui <- function(id){
           width = 6,
           DT::dataTableOutput(ns("results_table")) %>% 
             shinycssloaders::withSpinner(
-              # color = cla_colors()$theme[1]
             )
         ),
         shinydashboardPlus::boxPlus(
@@ -37,7 +36,6 @@ mod_results_dt_ui <- function(id){
           ),
           DT::dataTableOutput(ns("slide_table")) %>% 
             shinycssloaders::withSpinner(
-              # color = cla_colors()$theme[1]
             )
         )
       
@@ -49,25 +47,31 @@ mod_results_dt_ui <- function(id){
 #' @noRd 
 mod_results_dt_server <- function(input, output, session, .data){  
   ns <- session$ns
+  
+  # progress <- shiny::Progress$new()
+  # progress$set(message = "Computing", value = 0)
+  # on.exit(progress$close())
+  # 
+  # updateProgress <- function(value = NULL, detail = NULL) {
+  #   progress$inc(amount = 1/value, detail = detail)
+  # }
+  
+  model <- shiny::reactive({fct_bayes_deconv(.data())})
+  
 
   
   output$results_table <- DT::renderDataTable(server = TRUE, {
+    shiny::req(model())
     
-    progress <- shiny::Progress$new()
-    progress$set(message = "Computing", value = 0)
-    on.exit(progress$close())
     
-    updateProgress <- function(value = NULL, detail = NULL) {
-      progress$inc(amount = 1/value, detail = detail)
-    }
+    
+    
 
-    .data() %>%
-      fct_bayes_deconv(table = TRUE, updateProgress = updateProgress) %>% 
-      select(-c("Low Cut", "SE")) %>% 
+    model() %>%
+      fct_report_results(table = TRUE) %>% 
+      select(-c("Low Cut")) %>% 
       DT::datatable(rownames = FALSE,
-                    options = list(dom = 't')) %>% 
-      DT::formatPercentage(columns = c("High Cut", "Raw", "Adjusted"),
-                           digits = 2)
+                    options = list(dom = 't')) 
 
   })
   
@@ -84,6 +88,7 @@ mod_results_dt_server <- function(input, output, session, .data){
   })
   
   output$slide_table <- DT::renderDataTable(server = TRUE, {
+    shiny::req(model())
     
     progress <- shiny::Progress$new()
     progress$set(message = "Computing", value = 0)
@@ -94,21 +99,14 @@ mod_results_dt_server <- function(input, output, session, .data){
     }
     
     vals <- input_vals()
-    .data() %>%
-      fct_bayes_deconv(lo_cut = vals[1], hi_cut = vals[2], updateProgress = updateProgress) %>%
-      select(-SE) %>% 
+    
+    model() %>%
+      fct_report_results(lo_cut = vals[1], hi_cut = vals[2]) %>%
       DT::datatable(rownames = FALSE,
-                    options = list(dom = 't')) %>% 
-      DT::formatPercentage(columns = c("Low Cut", "High Cut", "Raw", "Adjusted"),
-                           digits = 2)
+                    options = list(dom = 't')) 
     
   })
   
-  # output$results_table <- renderTable({
-  #   
-  #   .data()
-  #   
-  # })
  
 }
     ## To be copied in the UI# mod_results_dt_ui("results_dt_ui_1")
