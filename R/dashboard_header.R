@@ -10,10 +10,11 @@ dashboard_header <- function() {
   header <- dashboardHeaderPlus(
     # enable_rightsidebar = FALSE,
     # rightSidebarIcon = "bars",
-    title = tags$a(
-      href = "https://connects.catalyst.harvard.edu/Profiles/display/Person/164317",
-      tags$img(src = "www/harvard-catalyst-rgb-med.png", width = "100px")
-    )
+    # title = tags$a(
+    #   href = "https://connects.catalyst.harvard.edu/Profiles/display/Person/164317",
+    #   tags$img(src = "www/harvard-catalyst-rgb-med.png", width = "100px")
+    # )
+    title = h4(HTML("Positive Rate<br/>Proportion Dashboard"))
   )
   
   return(header)

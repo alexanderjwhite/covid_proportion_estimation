@@ -3,8 +3,6 @@ fct_report_results <- function(model, lo_cut = 0, hi_cut = 0.05, table = FALSE){
   grid <- model %>% purrr::pluck("grid")
   bayes_mod <- model %>% purrr::pluck("model")
   
-  
-  
   if(table){
     if(max(positive_rate) > 0.1){
       hi <- c(seq(0.01,0.05,0.01),seq(0.1,max(positive_rate),0.05))
@@ -82,7 +80,6 @@ fct_report_results <- function(model, lo_cut = 0, hi_cut = 0.05, table = FALSE){
           pull(g) %>% 
           sum()
         
-        se<-sqrt(sum(out$cov.g[sel,sel]))
         
         bayes_se <- bayes_mod %>% 
           purrr::pluck("cov.g") %>% 

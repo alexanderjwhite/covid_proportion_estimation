@@ -7,7 +7,7 @@ mod_results_dt_ui <- function(id){
     fluidRow(
         shinydashboardPlus::boxPlus(
           title = "Results",
-          closeable = FALSE,
+          closable  = FALSE,
           collapsible = TRUE,
           solidHeader = FALSE,
           status = "primary",
@@ -18,7 +18,7 @@ mod_results_dt_ui <- function(id){
         ),
         shinydashboardPlus::boxPlus(
           title = "Custom Proportion Range",
-          closeable = FALSE,
+          closable  = FALSE,
           collapsible = TRUE,
           solidHeader = FALSE,
           status = "primary",
@@ -80,7 +80,10 @@ mod_results_dt_server <- function(input, output, session, .data){
                       max = (.data() %>% 
                                mutate(rate = (cases/tests)*100) %>% 
                                summarize(max = max(rate)) %>% 
-                               pull()))
+                               pull() %>% 
+                               scales::number(accuracy = 0.1)
+                             
+                             ))
   })
   
   input_vals <- eventReactive(input$update_button, {
