@@ -3,12 +3,14 @@
 #' @param data 
 #' @param param 
 
-fct_model_select_bic <- function(data, param = 2:5){
+fct_model_select_bic <- function(data, grid, param = 2:5){
+  
   models <- param %>% 
     list() %>% 
     purrr::pmap(
       .f = function(.x){
         model <- deconvolveR::deconv(tau=grid,X=data.frame(data),family="Binomial",pDegree=.x,c0=0)
+        
         bic <- fct_bic(model$loglik(model$mle)[1], nrow(data), .x)
         return(list(model = model,k = .x,bic = bic))
       }

@@ -19,6 +19,6 @@ fct_clean_file <- function(input){
         })
 
     })
-  
+
   return(clean_file)
 }

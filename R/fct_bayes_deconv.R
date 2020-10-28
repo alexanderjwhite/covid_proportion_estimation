@@ -30,8 +30,8 @@ fct_bayes_deconv <- function(.data, updateProgress = NULL){
 #   }
 # 
 #   selection <- which(grid >= lo_cut & grid <= hi_cut)
-  
-  pDegree <- fct_model_select_bic(.data)$k
+  # print(.data)
+  pDegree <- fct_model_select_bic(.data, grid)$k
   model <- deconvolveR::deconv(tau=grid,X=data.frame(.data),family="Binomial",pDegree=pDegree,c0=0)
   
   if(n < 200){
@@ -123,14 +123,11 @@ fct_bayes_deconv <- function(.data, updateProgress = NULL){
     # 
     # results <- tibble(estimate, se, confidence)
     
-    return(list(model = model, sample = sample, grid = grid, boot = TRUE))
+    return(list(model = model, sample = sample, grid = grid, rate = positive_rate, boot = TRUE))
 
   } else {
     
-    # data_sample <- .data
-    # print(data_sample)
-    
-    return(list(model = model, sample = NULL, grid = grid, boot = FALSE))
+    return(list(model = model, sample = NULL, grid = grid, rate = positive_rate, boot = FALSE))
     # results <- list(lo,hi) %>% 
     #   purrr::pmap_dfr(.f = function(.x, .y){
     #     

@@ -1,7 +1,10 @@
 fct_report_results <- function(model, lo_cut = 0, hi_cut = 0.05, table = FALSE){
   
+  
   grid <- model %>% purrr::pluck("grid")
   bayes_mod <- model %>% purrr::pluck("model")
+  positive_rate <- model %>% purrr::pluck("rate")
+  
   
   if(table){
     if(max(positive_rate) > 0.1){
@@ -68,6 +71,8 @@ fct_report_results <- function(model, lo_cut = 0, hi_cut = 0.05, table = FALSE){
     
   } else{
     
+    
+    
     results <- list(lo,hi) %>%
       purrr::pmap_dfr(.f = function(.x, .y){
         
@@ -107,6 +112,7 @@ fct_report_results <- function(model, lo_cut = 0, hi_cut = 0.05, table = FALSE){
         
         est_format <- bayes_est %>% 
           scales::number(accuracy = 0.0001)
+        
         
         tibble("Low Cut" = .x, "High Cut" = .y, "Raw" = raw, "Adjusted" = est_format, "Confidence" = ci_format)
       })

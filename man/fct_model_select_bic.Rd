@@ -4,7 +4,7 @@
 \alias{fct_model_select_bic}
 \title{Title}
 \usage{
-fct_model_select_bic(data, param = 2:5)
+fct_model_select_bic(data, grid, param = 2:5)
 }
 \arguments{
 \item{data}{}

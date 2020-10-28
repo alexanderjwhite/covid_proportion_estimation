@@ -37,7 +37,7 @@ mod_import_data_ui <- function(id){
           ),
           tabPanel(
             title = "Upload", 
-              fileInput(ns("file"), "Choose CSV File (see File Instructions Tab)",
+              fileInput(ns("file"), "Choose CSV File (see Instructions Tab)",
                         accept = c(
                           "text/csv",
                           "text/comma-separated-values,text/plain",

@@ -71,7 +71,9 @@ mod_results_dt_server <- function(input, output, session, .data){
       fct_report_results(table = TRUE) %>% 
       select(-c("Low Cut")) %>% 
       DT::datatable(rownames = FALSE,
-                    options = list(dom = 't')) 
+                    colnames = c("High %", "Raw Proportion", "Adjusted Proportion", "95% Confidence"),
+                    options = list(dom = 't')) %>% 
+      DT::formatPercentage("High Cut")
 
   })
   
@@ -92,21 +94,15 @@ mod_results_dt_server <- function(input, output, session, .data){
   
   output$slide_table <- DT::renderDataTable(server = TRUE, {
     shiny::req(model())
-    
-    # progress <- shiny::Progress$new()
-    # progress$set(message = "Computing", value = 0)
-    # on.exit(progress$close())
-    # 
-    # updateProgress <- function(value = NULL, detail = NULL) {
-    #   progress$inc(amount = 1/value, detail = detail)
-    # }
-    # 
+
     vals <- input_vals()
     
     model() %>%
       fct_report_results(lo_cut = vals[1], hi_cut = vals[2]) %>%
       DT::datatable(rownames = FALSE,
-                    options = list(dom = 't')) 
+                    colnames = c("Low %", "High %", "Raw Proportion", "Adjusted Proportion", "95% Confidence"),
+                    options = list(dom = 't'))  %>% 
+      DT::formatPercentage(c("Low Cut","High Cut"))
     
   })
   
