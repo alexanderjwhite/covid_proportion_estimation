@@ -24,10 +24,8 @@ dashboard_body <- function() {
       
       tabItem(
         tabName = "background_tab",
-        fluidRow(
-          h1("Background"),
-          p("Suppose...")
-        )
+        mod_background_ui("background_ui_1")
+
       )
     )
   )
