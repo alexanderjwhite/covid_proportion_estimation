@@ -14,10 +14,7 @@ dashboard_body <- function() {
         mod_import_data_ui("import_data_ui_1"),
         br(),
         mod_results_dt_ui("results_dt_ui_1"),
-        # br(),
-        # mod_barplots_ui("barplots_ui_1"),
-        br(),
-        br()
+
       ),
       
       # Background Tab

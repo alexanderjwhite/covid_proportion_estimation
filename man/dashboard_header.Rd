@@ -7,7 +7,7 @@
 dashboard_header()
 }
 \description{
-The header is where we declare the title, which in CLA's case will be the logo. We can also enable extra right side bar and more inside of the [shinydashboardPlus::dashboardHeaderPlus()] function. This function is a key component to the [shinydashboard::dashboardPage()]. In our dashboard we use an extension library to `shinydashboard` called `shindydashboardPlus` where we use [shinydashboardPlus::dashboardPagePlus()] for added features. In the [dashboard_page()] function you will find where these different shinydashboard components come together to form the dashboard.
+The header is where we declare the title.
 }
 \seealso{
 Other Shiny Dashboard Functions: 

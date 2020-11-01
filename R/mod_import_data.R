@@ -15,6 +15,7 @@ mod_import_data_ui <- function(id){
         
         shinydashboard::tabBox(
           title = "Import Data",
+          side = "right",
           id = "import_data",
           width = 6,
           tabPanel(
@@ -37,7 +38,7 @@ mod_import_data_ui <- function(id){
           ),
           tabPanel(
             title = "Upload", 
-              fileInput(ns("file"), "Choose CSV File (see Instructions Tab)",
+              fileInput(ns("file"), "Choose File (see Instructions Tab)",
                         accept = c(
                           "text/csv",
                           "text/comma-separated-values,text/plain",
@@ -105,7 +106,6 @@ mod_import_data_server <- function(input, output, session){
     extension <- path %>% 
       stringr::str_extract("\\w+$") %>% 
       stringr::str_to_lower()
-    print(extension)
     
     if(extension=="csv"){
       file <- read.csv(path,header = TRUE)
@@ -114,14 +114,11 @@ mod_import_data_server <- function(input, output, session){
     }
     
     file <- fct_clean_file(file)
-    print(file %>% colnames())
     
     validate(fct_file_validate(file))
     
     clean_file <- file %>% 
       select(tests,cases)
-    
-    # print(clean_file %>% colnames())
 
     return(clean_file)
     

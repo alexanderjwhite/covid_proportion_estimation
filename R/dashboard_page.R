@@ -10,6 +10,7 @@ dashboard_page <- function() {
     header = dashboard_header(),
     sidebar = dashboard_sidebar(),
     body = dashboard_body(),
+    footer = dashboard_footer(),
     collapse_sidebar = FALSE,
     tags$style(HTML(".info-box-text{text-transform:none;}"))
   )
