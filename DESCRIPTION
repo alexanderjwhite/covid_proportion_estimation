@@ -1,8 +1,8 @@
-Package: covid
-Title: COVID Bayes Deconvolution
+Package: positive.proportion.dashboard
+Title: Positive Proportion Estimation Dashboard
 Version: 0.0.0.9000
 Authors@R: person('Alex', 'White', email = 'whitealj@iu.edu', role = c('cre', 'aut'))
-Description: COVID Bayes Deconvolution
+Description: Estimate the true positive testing rate proportion using Bayesian Deconvolution.
 License: MIT + file LICENSE
 Imports: 
     config,
@@ -12,7 +12,16 @@ Imports:
     attempt,
     DT,
     glue,
-    htmltools
+    htmltools,
+    dplyr,
+    ggplot2,
+    shinydashboard,
+    shinydashboardPlus,
+    shinycssloaders,
+    rmarkdown,
+    pkgload,
+    deconvolveR,
+    readxl
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1

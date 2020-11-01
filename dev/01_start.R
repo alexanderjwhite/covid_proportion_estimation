@@ -14,9 +14,9 @@
 ## Fill the DESCRIPTION ----
 ## Add meta data about your application
 golem::fill_desc(
-  pkg_name = "covid", # The Name of the package containing the App 
-  pkg_title = "COVID Bayes Deconvolution", # The Title of the package containing the App 
-  pkg_description = "COVID Bayes Deconvolution", # The Description of the package containing the App 
+  pkg_name = "positive.proportion.dashboard", # The Name of the package containing the App 
+  pkg_title = "Positive Proportion Estimation Dashboard", # The Title of the package containing the App 
+  pkg_description = "Estimate the true positive testing rate proportion using Bayesian Deconvolution.", # The Description of the package containing the App 
   author_first_name = "Alex", # Your First Name
   author_last_name = "White", # Your Last Name
   author_email = "whitealj@iu.edu", # Your Email
@@ -28,7 +28,8 @@ golem::set_golem_options()
 
 ## Create Common Files ----
 ## See ?usethis for more information
-usethis::use_mit_license( name = "Golem User" )  # You can set another license here
+usethis::use_mit_license( name = "Golem User" )  
+# You can set another license here
 usethis::use_readme_rmd( open = FALSE )
 usethis::use_code_of_conduct()
 usethis::use_lifecycle_badge( "Experimental" )
@@ -47,7 +48,7 @@ golem::use_recommended_deps()
 ## Favicon ----
 # If you want to change the favicon (default is golem's one)
 golem::remove_favicon()
-golem::use_favicon() # path = "path/to/ico". Can be an online file. 
+golem::use_favicon("./inst/data/Coronavirus.png") # path = "path/to/ico". Can be an online file. 
 
 ## Add helper functions ----
 golem::use_utils_ui()

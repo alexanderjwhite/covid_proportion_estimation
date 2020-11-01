@@ -15,16 +15,25 @@
 
 ## Dependencies ----
 ## Add one line by package you want to add as dependency
-usethis::use_package( "thinkr" )
+usethis::use_package( "dplyr" )
+usethis::use_package( "ggplot2" )
+usethis::use_package( "shinydashboard" )
+usethis::use_package( "shinydashboardPlus" )
+usethis::use_package( "shinycssloaders" )
+usethis::use_package( "rmarkdown" )
+usethis::use_package( "pkgload" )
+usethis::use_package( "deconvolveR" )
+usethis::use_package( "readxl" )
+
 
 ## Add modules ----
 ## Create a module infrastructure in R/
-golem::add_module( name = "barplots" ) # Name of the module
+golem::add_module( name = "name_of_module1" ) # Name of the module
 golem::add_module( name = "name_of_module2" ) # Name of the module
 
 ## Add helper functions ----
 ## Creates ftc_* and utils_*
-golem::add_fct( "bayes_deconv" ) 
+golem::add_fct( "helpers" ) 
 golem::add_utils( "helpers" )
 
 ## External resources
@@ -44,7 +53,7 @@ usethis::use_test( "app" )
 # Documentation
 
 ## Vignette ----
-usethis::use_vignette("covid")
+usethis::use_vignette("positive.proportion.dashboard")
 devtools::build_vignettes()
 
 ## Code coverage ----

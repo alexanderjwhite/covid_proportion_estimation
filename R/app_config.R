@@ -5,7 +5,7 @@
 #' 
 #' @noRd
 app_sys <- function(...){
-  system.file(..., package = "covid")
+  system.file(..., package = "positive.proportion.dashboard")
 }
 
 

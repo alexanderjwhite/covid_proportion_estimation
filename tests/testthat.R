@@ -1,4 +1,4 @@
 library(testthat)
-library(covid)
+library(positive.proportion.dashboard)
 
-test_check("covid")
+test_check("positive.proportion.dashboard")
