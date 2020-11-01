@@ -34,10 +34,6 @@ fct_bayes_deconv <- function(.data, updateProgress = NULL){
     sample <- array(as.numeric())
     for (i in 1:M){
       
-      
-      
-      
-      
       if (is.function(updateProgress)) {
         
         updateProgress(M, detail = "bootstrapped sample")
@@ -56,9 +52,6 @@ fct_bayes_deconv <- function(.data, updateProgress = NULL){
   } else {
     
     return(list(model = model, sample = NULL, grid = grid, rate = positive_rate, boot = FALSE))
-
-    
+ 
   }
-
-  
 }

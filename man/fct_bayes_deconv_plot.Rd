@@ -9,9 +9,6 @@ fct_bayes_deconv_plot(.data)
 \arguments{
 \item{.data}{}
 }
-\value{
-
-}
 \description{
 Title
 }

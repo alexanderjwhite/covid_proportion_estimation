@@ -48,24 +48,10 @@ mod_results_dt_ui <- function(id){
 mod_results_dt_server <- function(input, output, session, .data){  
   ns <- session$ns
   
-  # progress <- shiny::Progress$new()
-  # progress$set(message = "Computing", value = 0)
-  # on.exit(progress$close())
-  # 
-  # updateProgress <- function(value = NULL, detail = NULL) {
-  #   progress$inc(amount = 1/value, detail = detail)
-  # }
-  
   model <- shiny::reactive({fct_bayes_deconv(.data())})
-  
 
-  
   output$results_table <- DT::renderDataTable(server = TRUE, {
     shiny::req(model())
-    
-    
-    
-    
 
     model() %>%
       fct_report_results(table = TRUE) %>% 

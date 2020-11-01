@@ -1,3 +1,6 @@
+#' Title
+#'
+#' @param input 
 fct_clean_file <- function(input){
   column_names <- input %>% 
     colnames() %>% 

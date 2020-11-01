@@ -1,8 +1,9 @@
 #' Title
 #'
 #' @param data 
+#' @param grid 
 #' @param param 
-
+#' 
 fct_model_select_bic <- function(data, grid, param = 2:5){
   
   models <- param %>% 

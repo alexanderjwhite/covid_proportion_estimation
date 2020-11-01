@@ -1,3 +1,10 @@
+#' Title
+#'
+#' @param model 
+#' @param lo_cut 
+#' @param hi_cut 
+#' @param table 
+#' 
 fct_report_results <- function(model, lo_cut = 0, hi_cut = 0.05, table = FALSE){
   
   

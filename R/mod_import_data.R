@@ -86,11 +86,6 @@ mod_import_data_server <- function(input, output, session){
          alt = "This is alternate text")
   }, deleteFile = FALSE)
   
-  # output$downloadData <- downloadHandler(
-  #   filename = "example_data.csv",
-  #   content = function(file) {write.csv(read.csv("./inst/data/example_data.csv"), file, row.names = FALSE)}
-  # )
-      
   userFile <- reactive({
     
     if(is.null(input$file)){

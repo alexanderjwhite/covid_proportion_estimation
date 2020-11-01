@@ -1,3 +1,7 @@
+#' Title
+#'
+#' @param input 
+#' 
 fct_file_validate <- function(input){
   col_names <- input %>% 
     colnames() %>% 

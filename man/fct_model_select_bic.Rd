@@ -9,6 +9,8 @@ fct_model_select_bic(data, grid, param = 2:5)
 \arguments{
 \item{data}{}
 
+\item{grid}{}
+
 \item{param}{}
 }
 \description{

@@ -2,10 +2,6 @@
 #'
 #' @param .data 
 #'
-#' @return
-#' @export
-#'
-#' @examples
 #' @import ggplot2
 fct_bayes_deconv_plot <- function(.data){
   
@@ -39,7 +35,6 @@ fct_bayes_deconv_plot <- function(.data){
   
   p <- plotly::ggplotly(p)
   
-  # Sys.sleep(3)
   return(p)
   
 }
