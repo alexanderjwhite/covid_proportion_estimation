@@ -1,13 +1,16 @@
 #' background UI Function
 #'#' @description A shiny Module.#'#' @param id,input,output,session Internal parameters for {shiny}.#'#' @noRd #'#' @importFrom shiny NS tagList 
-mod_background_ui <- function(id){  ns <- NS(id)
+mod_background_ui <- function(id){  
+  ns <- NS(id)
   tagList( 
     fluidRow(
       withMathJax(),
       column(2,""),
       column(8,
       h1("Estimation of the Distribution of COVID-19 Test Positivity Rate in Communities", align = "center"),
-      tags$p(helpText("The distribution of COVID-19 test positivity rate in communities (e.g. proportion of communities with test positivity rate below certain threshold) is critically important to guide public health and policy responses. If 10 out of 50 zip code areas in a city have a test positivity rate below 5% then  the naïve estimate of the proportion is \\(\\frac{10}{50}=0.2\\). The naïve estimate, however, ignores the margin of error of the test positivity rate in each zip code, which could lead to either over- or under-estimate of the proportion. This online application uses a statistical method called Bayesian deconvolution to generate a more accurate estimate."))
+      tags$p(
+        helpText(
+          "The distribution of COVID-19 test positivity rate in communities can be used to guide public health and policy responses. Specifically, the proportion of local communities (e.g. zip code areas) with a test positivity rate below an upper threshold (or above a lower threshold) offers important insight on the disease control within a city or county. For instance, if 10 out of 50 zip code areas in a city have a test positivity rate below an upper threshold of 5% then  the naïve estimate of the proportion is \\(\\frac{10}{50}=0.2\\). . The naïve estimate, however, ignores the margin of error of the test positivity rate in each zip code, which could lead to either over- or under-estimate of the proportion. This online application uses a statistical method called Bayesian deconvolution to generate a more accurate estimate."))
       ),
       column(2,"")
     ),

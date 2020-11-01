@@ -1,5 +1,8 @@
 ---
-output: github_document
+output: 
+  github_document:
+    pandoc_args: --webtex
+always_allow_html: yes
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -43,9 +46,9 @@ run_app()
 
 ## Instructions
 
-Welcome to the positive rate proportion dashboard. As an example of how the dashboard works, COVID-19 testing data collected by the city of Chicago has been pre-loaded. Follow the steps below to estimate the true positive rate proportion.
+Welcome to the dashboard of the distribution of test positivity rate. This application is designed to estimate the distribution of test positivity rate among local communities. As an example, COVID-19 testing data in each zip code collected by the city of Chicago has been pre-loaded. In the *View* Data section, the loaded data are displayed with each row representing data from a zip code. The *Results* section displays the estimates of the proportion of zip code areas with a test positivity rate below various upper thresholds. The *Customized Results* section displays the proportion of zip code areas with a test positivity rate between arbitrary lower threshold and upper threshold.
 
-1. Format your data as shown in the image below. The first row should contain the column names. Each row in the column named 'tests' should contain the number of tests performed. Each row in the column named 'cases' should contain the number of positive test results. Acceptable formats include .csv, .xlsx, and .xls.
+1. Format your data as shown in the image below. The first row should contain the column names. Each row in the column named *tests* should contain the number of tests performed. Each row in the column named *cases* should contain the number of positive test results. Acceptable formats include *.csv*, *.xlsx*, and *.xls*.
 
 2. Navigate to the Upload tab.
 
@@ -55,7 +58,7 @@ Welcome to the positive rate proportion dashboard. As an example of how the dash
 
 ## Background
 
-The distribution of COVID-19 test positivity rate in communities (e.g. proportion of communities with test positivity rate below certain threshold) is critically important to guide public health and policy responses. If 10 out of 50 zip code areas in a city have a test positivity rate below 5% then the naïve estimate of the proportion is $\frac{10}{50}=0.2$. The naïve estimate, however, ignores the margin of error of the test positivity rate in each zip code, which could lead to either over- or under-estimate of the proportion. This online application uses a statistical method called Bayesian deconvolution to generate a more accurate estimate.
+The distribution of COVID-19 test positivity rate in communities can be used to guide public health and policy responses. Specifically, the proportion of local communities (e.g. zip code areas) with a test positivity rate below an upper threshold (or above a lower threshold) offers important insight on the disease control within a city or county. For instance, if 10 out of 50 zip code areas in a city have a test positivity rate below an upper threshold of 5% then  the naïve estimate of the proportion is $\frac{10}{50}=0.2$. The naïve estimate, however, ignores the margin of error of the test positivity rate in each zip code, which could lead to either over- or under-estimate of the proportion. This online application uses a statistical method called Bayesian deconvolution to generate a more accurate estimate.
 
 ![](inst/data/figure_1.png)
 
@@ -66,3 +69,26 @@ Illustration on how the native calculation can result in overly-optimistic or ov
 ### Legend
 
 The figure on the left side shows one scenario where the naïve estimate will overestimate the proportion of community level test positivity rate of 5% or less as compared with estimate that accounts for the margin of errors (adjusted estimate). The red area indicates the magnitude of over-optimism. The figure on the right side shows one scenario where the naïve estimate will overestimate the proportion of community level test positivity rate of 5% or more. The red area indicates the magnitude of over-pessimism.
+
+## Technical Details
+
+Suppose there are $n$ communities. Let $t_i$ and $c_i$ be the number of tests and cases in a given period of time for community $i$ $(i = 1,2,\ldots,n)$. The naïve estimate of the test positivity rate for community $i$, $\hat{r}_i = c_i/t_i$, has a margin of error in estimating the *true* test positivity rate $r_i$. Here the true test positivity rate refers to the rate that would have been calculated had we been able to test all eligible subjects in the community. The margin of error associated with $\hat{r}_i$  in estimating $r_i$ can be estimated by $1.96 \times \sqrt{\hat{r}_i (1-\hat{r}_i)/t_i}$.
+
+The naïve estimate of the proportion of communities with test positivity rate below threshold $r_0$ is 
+
+$$\hat{p}(r_0)=\frac{\sum_{i=1}^n I(\hat{r}_i \leq r_0)}{n},$$
+
+where $I(\cdot)$ is the indicatory function. Because of the margin of errors associated with $\hat{r}_i, \hat{p}(r_0)$ could be a biased estimate of the true proportion 
+
+$$p(r_0)=\frac{\sum_{i=1}^n I(r_i \leq r_0)}{n}.$$
+
+A solution that accounts for the margin of errors is the empirical Bayes deconvolution method. In this approach, the distribution induced by the rates $r_i (i=1,2,\cdots,n), g(r)$, is assumed to be a natural cubic spline with knots at equally spaced quantiles and can be estimated through either maximum likelihood or regularized maximum likelihood method using data $(t_i,c_i) (i=1,2,\ldots,n)$. We used maximum likelihood method with Bayesian Information Criteria (BIC) as the tool to select model degrees of freedom up to 5. Once we obtain an estimate $\hat{g}(r)$, we can estimate $p(r_0)$ by 
+
+$$\tilde{p}(r_0) = \int_0^{r_0}\hat{g}(r)dr.$$
+
+$\tilde{p}(r_0)$ can be a much more accurate estimate of $p(r_0)$ than $\hat{p}(r_0)$.
+
+## References
+
+1. Efron B. Empirical Bayes deconvolution estimates. *Biometrika*. 2016;103(1):1-20.
+2. Narasimhan B, Efron B. deconvolveR: A G-Modeling Program for Deconvolution and Empirical Bayes Estimation. *Journal of Statistical Software*. 2020;94(11).

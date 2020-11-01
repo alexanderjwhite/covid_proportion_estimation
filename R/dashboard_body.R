@@ -23,7 +23,13 @@ dashboard_body <- function() {
         tabName = "background_tab",
         mod_background_ui("background_ui_1")
 
+      ),
+      
+      tabItem(
+        tabName = "details_tab",
+        mod_details_ui("details_ui_1") 
       )
+        
     )
   )
 }

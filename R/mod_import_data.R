@@ -20,11 +20,29 @@ mod_import_data_ui <- function(id){
           width = 6,
           tabPanel(
             title = "Instructions",
-            p("Welcome to the positive rate proportion dashboard. As an example of how the dashboard works, COVID-19 testing data collected by the city of Chicago has been pre-loaded. Follow the steps below to estimate the true positive rate proportion."),
+            p(
+              "Welcome to the dashboard of the distribution of test positivity rate. This application is designed to estimate the distribution of test positivity rate among local communities. As an example, COVID-19 testing data in each zip code collected by the city of Chicago has been pre-loaded. In the ",
+              tags$em("View Data"),
+              " Data section, the loaded data are displayed with each row representing data from a zip code. The ",
+              tags$em("Results"),
+              " section displays the estimates of the proportion of zip code areas with a test positivity rate below various upper thresholds. The ",
+              tags$em("Customized Results"),
+              " section displays the proportion of zip code areas with a test positivity rate between arbitrary lower threshold and upper threshold."
+            ),
             tags$strong("Steps"),
             tags$div(
               tags$ol(
-                tags$li("Format your data as shown in the image below. The first row should contain the column names. Each row in the column named 'tests' should contain the number of tests performed. Each row in the column named 'cases' should contain the number of positive test results. Acceptable formats include .csv, .xlsx, and .xls."),
+                tags$li(
+                  "Format your data as shown in the image below. The first row should contain the column names. Each row in the column named",
+                  tags$em("tests"), 
+                  "should contain the number of tests performed. Each row in the column named", 
+                  tags$em("cases"), 
+                  "should contain the number of positive test results. Acceptable formats include ",
+                  tags$em(".csv,"), 
+                  tags$em(".xlsx"), 
+                  ", and ",
+                  tags$em(".xls.")
+                  ),
                 imageOutput(ns("example_format"), inline = TRUE),
                 tags$li("Navigate to the ",tags$b("Upload")," tab."),
                 tags$li("Select ",tags$b("Browse")," and upload your file."),

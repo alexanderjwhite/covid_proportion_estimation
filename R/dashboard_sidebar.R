@@ -18,6 +18,11 @@ dashboard_sidebar <- function() {
         tabName = "background_tab",
         text = "Background",
         icon = shiny::icon("align-left")
+      ),
+      shinydashboard::menuItem(
+        tabName = "details_tab",
+        text = "Details",
+        icon = shiny::icon("wave-square")
       )
     )
   )
