@@ -22,7 +22,7 @@ dashboard_sidebar <- function() {
       shinydashboard::menuItem(
         tabName = "details_tab",
         text = "Details",
-        icon = shiny::icon("wave-square")
+        icon = shiny::icon("brain")
       )
     )
   )

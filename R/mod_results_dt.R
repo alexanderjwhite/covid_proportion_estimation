@@ -17,7 +17,7 @@ mod_results_dt_ui <- function(id){
             )
         ),
         shinydashboardPlus::boxPlus(
-          title = "Custom Proportion Range",
+          title = "Proportion Between Lower and Upper Thresholds",
           closable  = FALSE,
           collapsible = TRUE,
           solidHeader = FALSE,
@@ -57,7 +57,7 @@ mod_results_dt_server <- function(input, output, session, .data){
       fct_report_results(table = TRUE) %>% 
       select(-c("Low Cut")) %>% 
       DT::datatable(rownames = FALSE,
-                    colnames = c("High %", "Raw Proportion", "Adjusted Proportion", "95% Confidence"),
+                    colnames = c("Upper Threshold", "Raw Proportion", "Adjusted Proportion", "95% Confidence"),
                     options = list(dom = 't')) %>% 
       DT::formatPercentage("High Cut")
 
@@ -86,7 +86,7 @@ mod_results_dt_server <- function(input, output, session, .data){
     model() %>%
       fct_report_results(lo_cut = vals[1], hi_cut = vals[2]) %>%
       DT::datatable(rownames = FALSE,
-                    colnames = c("Low %", "High %", "Raw Proportion", "Adjusted Proportion", "95% Confidence"),
+                    colnames = c("Lower Threshold", "Upper Threshold", "Raw Proportion", "Adjusted Proportion", "95% Confidence"),
                     options = list(dom = 't'))  %>% 
       DT::formatPercentage(c("Low Cut","High Cut"))
     

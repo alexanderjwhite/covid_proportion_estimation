@@ -8,7 +8,7 @@ dashboard_footer <- function() {
                            tags$a(href="https://github.com/alexanderjwhite", "Alex White"))),
     right = tags$a(
       href = "https://github.com/alexanderjwhite/covid_proportion_estimation",
-      tags$img(src = "www/GitHub_Logo.png", width = "40px")
+      tags$img(src = "www/GitHub_Logo.png", width = "60px")
     )
   )
   

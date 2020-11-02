@@ -59,19 +59,19 @@ fct_report_results <- function(model, lo_cut = 0, hi_cut = 0.05, table = FALSE){
             
             ci_lo <- (2*bayes_est-quant[1]) %>% 
               max(0) %>% 
-              scales::number(accuracy = 0.0001)
+              scales::number(accuracy = 0.001)
             
             ci_hi <- (2*bayes_est-quant[2]) %>% 
               min(1) %>% 
-              scales::number(accuracy = 0.0001)
+              scales::number(accuracy = 0.001)
             
             raw <- mean(positive_rate >= .x & positive_rate <= .y) %>% 
-              scales::number(accuracy = 0.0001)
+              scales::number(accuracy = 0.001)
             
             ci_format <- paste0("(",ci_lo,",",ci_hi,")")
             
             est_format <- bayes_est %>% 
-              scales::number(accuracy = 0.0001)
+              scales::number(accuracy = 0.001)
             
             tibble("Low Cut" = .x, "High Cut" = .y, "Raw" = raw, "Adjusted" = est_format, "Confidence" = ci_format)
           })
@@ -102,23 +102,23 @@ fct_report_results <- function(model, lo_cut = 0, hi_cut = 0.05, table = FALSE){
           sqrt()
         
         raw <- mean(positive_rate >= .x & positive_rate <= .y) %>% 
-          scales::number(accuracy = 0.0001)
+          scales::number(accuracy = 0.001)
 
         z <- 0.975 %>% 
           qnorm()
         
         ci_lo <- (bayes_est-z*bayes_se) %>% 
           max(0) %>% 
-          scales::number(accuracy = 0.0001)
+          scales::number(accuracy = 0.001)
         
         ci_hi <- (bayes_est+z*bayes_se) %>% 
           min(1) %>% 
-          scales::number(accuracy = 0.0001)
+          scales::number(accuracy = 0.001)
         
         ci_format <- paste0("(",ci_lo,",",ci_hi,")")
         
         est_format <- bayes_est %>% 
-          scales::number(accuracy = 0.0001)
+          scales::number(accuracy = 0.001)
         
         
         tibble("Low Cut" = .x, "High Cut" = .y, "Raw" = raw, "Adjusted" = est_format, "Confidence" = ci_format)

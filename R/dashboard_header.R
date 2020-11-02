@@ -8,7 +8,7 @@
 dashboard_header <- function() {
   
   header <- dashboardHeaderPlus(
-    title = h4(HTML("Positive Rate<br/>Proportion Dashboard"))
+    title = h4(HTML("Test Positivity Rate<br/>Distribution Dashboard"))
   )
   
   return(header)

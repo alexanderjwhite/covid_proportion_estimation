@@ -17,7 +17,32 @@ mod_import_data_ui <- function(id){
           title = "Import Data",
           side = "right",
           id = "import_data",
+          selected = "Instructions",
           width = 6,
+          height = 200,
+          tabPanel(
+            title = "Upload", 
+            fluidRow(
+              # column(4,""),
+              column(4,
+            
+            fileInput(ns("file"), "Choose File (see Instructions Tab)",
+                      accept = c(
+                        "text/csv",
+                        "text/comma-separated-values,text/plain",
+                        ".csv",
+                        ".xls",
+                        ".xlsx")
+            )),
+            
+            column(8,
+                   shinydashboard::valueBoxOutput(ns("n_obs"))
+            
+            )
+              )
+            
+            
+          ),
           tabPanel(
             title = "Instructions",
             p(
@@ -53,18 +78,8 @@ mod_import_data_ui <- function(id){
             tags$br(),
             p("For information regarding the background of this dashboard, please visit the ",tags$b("Background")," tab.")
             
-          ),
-          tabPanel(
-            title = "Upload", 
-              fileInput(ns("file"), "Choose File (see Instructions Tab)",
-                        accept = c(
-                          "text/csv",
-                          "text/comma-separated-values,text/plain",
-                          ".csv",
-                          ".xls",
-                          ".xlsx")
-              )
-            )
+          )
+          
           
   
        ),
@@ -137,12 +152,20 @@ mod_import_data_server <- function(input, output, session){
     
   })
   
+  
+  output$n_obs <- shinydashboard::renderValueBox({
+    shinydashboard::valueBox(
+      datafile() %>% nrow(), "Observations", icon = icon("list"),
+      color = "blue"
+    )
+  })
+  
   output$data_table <- DT::renderDataTable(server = TRUE, {
     
     datafile() %>%
       mutate(pos = cases/tests) %>% 
       DT::datatable(colnames = c("Tests", "Cases", "Positive Rate"), 
-                    options = list(dom = 'tp', pageLength = 5)) %>% 
+                    options = list(dom = 'tp', pageLength = 10)) %>% 
       DT::formatPercentage(columns = "pos", digits = 2)
     
   })

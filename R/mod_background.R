@@ -28,8 +28,7 @@ mod_background_ui <- function(id){
       tags$br(),
       tags$br(),
       tags$strong("Figure 1"),
-      tags$p(helpText("Illustration on how the native calculation can result in overly-optimistic or overly-pessimistic estimate of the proportion of community-level test positivity rate below a threshold")),
-      tags$strong("Legend"),
+      tags$p(helpText("Illustration on how the native calculation can result in overly-optimistic or overly-pessimistic estimate of the proportion of community-level test positivity rate below a threshold.")),
       tags$p(helpText("The figure on the left side shows one scenario where the naïve estimate will overestimate the proportion of community level test positivity rate of 5% or less as compared with estimate that accounts for the margin of errors (adjusted estimate). The red area indicates the magnitude of over-optimism. The figure on the right side shows one scenario where the naïve estimate will overestimate the proportion of community level test positivity rate of 5% or more. The red area indicates the magnitude of over-pessimism.")),
       tags$strong("References"),
       tags$ol(
