@@ -16,13 +16,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Positive Rate Proportion Dashboard <img src="./inst/data/Coronavirus.png" align="right" />
+# Test Positivity Rate Distribution Dashboard <img src="./inst/data/Coronavirus.png" align="right" />
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-The goal of Positive Rate Proportion Dashboard is to estimate of the distribution of COVID-19 test positivity rates in communities.
+The goal of Test Positivity Rate Distribution Dashboard is to estimate of the distribution of COVID-19 test positivity rates in communities.
 
 ## Installation
 
@@ -37,7 +37,7 @@ devtools::install_github("alexanderjwhite/covid_proportion_estimation")
 
 There are two ways to access the app:
 
-* [https://alexanderjwhite.shinyapps.io/positiveproportion/](https://alexanderjwhite.shinyapps.io/positiveproportion/)
+* [https://alexanderjwhite.shinyapps.io/covid_proportion_estimation/](https://alexanderjwhite.shinyapps.io/covid_proportion_estimation/)
 * from the package (see below)
 
 ```{r eval=FALSE}

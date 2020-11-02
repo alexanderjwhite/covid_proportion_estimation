@@ -5,6 +5,6 @@ account: alexanderjwhite
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 3140502
-bundleId: 3811670
+bundleId: 3812436
 url: https://alexanderjwhite.shinyapps.io/covid_proportion_estimation/
-when: 1604338044.42162
+when: 1604352041.17607

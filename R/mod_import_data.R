@@ -48,7 +48,7 @@ mod_import_data_ui <- function(id){
             p(
               "Welcome to the dashboard of the distribution of test positivity rate. This application is designed to estimate the distribution of test positivity rate among local communities. As an example, COVID-19 testing data in each zip code collected by the city of Chicago has been pre-loaded. In the ",
               tags$em("View Data"),
-              " Data section, the loaded data are displayed with each row representing data from a zip code. The ",
+              " section, the loaded data are displayed with each row representing data from a zip code. The ",
               tags$em("Results"),
               " section displays the estimates of the proportion of zip code areas with a test positivity rate below various upper thresholds. The ",
               tags$em("Customized Results"),
