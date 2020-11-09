@@ -46,12 +46,12 @@ mod_import_data_ui <- function(id){
           tabPanel(
             title = "Instructions",
             p(
-              "Welcome to the dashboard of the distribution of test positivity rate. This application is designed to estimate the distribution of test positivity rate among local communities. As an example, COVID-19 testing data in each zip code collected by the city of Chicago has been pre-loaded. In the ",
+              "Welcome to the dashboard of the distribution of test positivity rate. This application is designed to estimate the distribution of test positivity rate among local communities. As an example, a sample of the COVID-19 testing data in each zip code collected by the city of Chicago in week 36 has been pre-loaded. In the ",
               tags$em("View Data"),
               " section, the loaded data are displayed with each row representing data from a zip code. The ",
               tags$em("Results"),
               " section displays the estimates of the proportion of zip code areas with a test positivity rate below various upper thresholds. The ",
-              tags$em("Customized Results"),
+              tags$em("Proportion Between Lower and Upper Thresholds"),
               " section displays the proportion of zip code areas with a test positivity rate between arbitrary lower threshold and upper threshold."
             ),
             tags$strong("Steps"),
@@ -92,7 +92,6 @@ mod_import_data_ui <- function(id){
          width = 6,
          DT::dataTableOutput(ns("data_table")) %>% 
            shinycssloaders::withSpinner(
-             # color = cla_colors()$theme[1]
            )
        )
       )
@@ -116,13 +115,13 @@ mod_import_data_server <- function(input, output, session){
          contentType = 'image/png',
          width = 178,
          height = 100,
-         alt = "This is alternate text")
+         alt = "")
   }, deleteFile = FALSE)
   
   userFile <- reactive({
     
     if(is.null(input$file)){
-      return(list(datapath = "./inst/data/example_data_200.csv"))
+      return(list(datapath = "./inst/data/chicago_data.csv"))
     } else {
       validate(need(input$file !="", ""))
       return(input$file)

@@ -21,7 +21,7 @@ dashboard_sidebar <- function() {
       ),
       shinydashboard::menuItem(
         tabName = "details_tab",
-        text = "Details",
+        text = "Statistical Details",
         icon = shiny::icon("brain")
       )
     )

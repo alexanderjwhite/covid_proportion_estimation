@@ -6,7 +6,7 @@ mod_details_ui <- function(id){
   tagList( 
     fluidRow(
       withMathJax(),
-      h1("Technical Details", align = "center"),
+      h1("Statistical Details", align = "center"),
       column(2,""),
       column(8,
       helpText("Suppose there are \\(n\\) communities. Let \\(t_i\\) and \\(c_i\\) be the number of tests and cases in a given period of time for community \\(i\\) \\( (i = 1,2,\\cdots,n)\\). The naïve estimate of the test positivity rate for community \\(i\\), \\(\\hat{r}_i = c_i/t_i\\), has a margin of error in estimating the",tags$em("true"),"test positivity rate \\(r_i\\). Here the true test positivity rate refers to the rate that would have been calculated had we been able to test all eligible subjects in the community. The margin of error associated with \\(\\hat{r}_i\\)  in estimating \\(r_i\\) can be estimated by \\( 1.96 \\times \\sqrt{\\hat{r}_i (1-\\hat{r}_i)/t_i} \\)."),
