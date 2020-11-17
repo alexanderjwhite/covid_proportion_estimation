@@ -19,12 +19,11 @@ mod_import_data_ui <- function(id){
           id = "import_data",
           selected = "Instructions",
           width = 6,
-          height = 200,
+          height = "150%",
           tabPanel(
             title = "Upload", 
             fluidRow(
-              # column(4,""),
-              column(4,
+              column(12,
             
             fileInput(ns("file"), "Choose File (see Instructions Tab)",
                       accept = c(
@@ -33,12 +32,7 @@ mod_import_data_ui <- function(id){
                         ".csv",
                         ".xls",
                         ".xlsx")
-            )),
-            
-            column(8,
-                   shinydashboard::valueBoxOutput(ns("n_obs"))
-            
-            )
+            ))
               )
             
             
@@ -46,7 +40,7 @@ mod_import_data_ui <- function(id){
           tabPanel(
             title = "Instructions",
             p(
-              "Welcome to the dashboard of the distribution of test positivity rate. This application is designed to estimate the distribution of test positivity rate among local communities. As an example, a sample of the COVID-19 testing data in each zip code collected by the city of Chicago in week 36 has been pre-loaded. In the ",
+              "Welcome to the dashboard of the distribution of test positivity rate. This application is designed to estimate the distribution of test positivity rate among local communities. As an example, a sample of the COVID-19 testing data in each zip code collected by the city of Chicago in from 8/30/2020 to 9/5/2020 has been pre-loaded. In the ",
               tags$em("View Data"),
               " section, the loaded data are displayed with each row representing data from a zip code. The ",
               tags$em("Results"),
@@ -72,7 +66,6 @@ mod_import_data_ui <- function(id){
                 tags$li("Navigate to the ",tags$b("Upload")," tab."),
                 tags$li("Select ",tags$b("Browse")," and upload your file."),
                 tags$li("A table of default positive rate proportion will populate in the ",tags$b("Results")," table. Estimate the positive rate proportion for a custom range by adjusting the sliding bar and selecting ",tags$b("Update"),".")
-                # imageOutput(ns("example_format"), inline = FALSE)
                 )
             ),
             tags$br(),
@@ -107,6 +100,10 @@ mod_import_data_ui <- function(id){
 #' @noRd 
 mod_import_data_server <- function(input, output, session){  
   ns <- session$ns 
+  
+  output$instructions <- renderText({
+    
+  })
   
   output$example_format <- renderImage({
     
