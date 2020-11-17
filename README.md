@@ -41,7 +41,7 @@ Welcome to the dashboard of the distribution of test positivity rate.
 This application is designed to estimate the distribution of test
 positivity rate among local communities. As an example, a sample of the
 COVID-19 testing data in each zip code collected by the city of Chicago
-in from 8/30/2020 to 9/5/2020 has been pre-loaded. In the *View* Data
+from 8/30/2020 to 9/5/2020 has been pre-loaded. In the *View* Data
 section, the loaded data are displayed with each row representing data
 from a zip code. The *Results* section displays the estimates of the
 proportion of zip code areas with a test positivity rate below various
