@@ -3,8 +3,7 @@ dashboard_footer <- function() {
   footer <- shinydashboardPlus::dashboardFooter(
     left = fluidRow(
       " ",
-      tags$p(tags$a(href="https://connects.catalyst.harvard.edu/Profiles/display/Person/164317", "Changyu Shen", target="_blank"),
-                           "|",
+      tags$p("Changyu Shen |",
                            tags$a(href="https://github.com/alexanderjwhite", "Alex White", target="_blank"))),
     right = tags$a(
       href = "https://github.com/alexanderjwhite/covid_proportion_estimation",
